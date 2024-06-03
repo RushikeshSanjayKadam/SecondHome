@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Room>
+
+<div class="col-12 mx-auto">
+    <div class="card">
+        <div class="card-content">
+            <!-- table striped -->
+            <div class="table-responsive">
+
+                <br />
+                <h5 class="card-title text-center text-info">Rooms</h5>
+
+                <a class="btn btn-outline-primary w-25" asp-action="Create"> Create </a>
+                <table class="table table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr.No.</th>
+                            <th scope="col">Room Number</th>
+                            <th scope="col">Room Category</th>
+                            <th scope="col">Floor</th>
+                            <th scope="col">MaxNoofAdults</th>
+                            <th scope="col">MaxNoofChilds</th>
+                            <th scope="col">Room Charges</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int srno = 1;
+                        }
+                        @foreach (var temp in Model)
+                        {
+                            <tr>
+                                <td scope="row">@srno</td>
+                                <td>@temp.RoomNumber</td>
+                                <td>@temp.RoomCategory.RoomCategoryName</td>
+                                <td >@temp.Floor.FloorNumber</td>
+                                <td>@temp.MaxNoofAdults</td>
+                                <td>@temp.MaxNoofChilds</td>
+                                <td>@temp.RoomCharges</td>
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@temp.RoomID">Edit</a>
+                                    |
+                                    <a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@temp.RoomID">Delete</a>
+                                </td>
+                            </tr>
+                            srno++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BookingCheckOut>
+
+<div class="col-12 mx-auto">
+    <div class="card">
+        <div class="card-content">
+            <!-- table striped -->
+            <div class="table-responsive">
+
+                <br />
+                <h5 class="card-title text-center text-info">Check Out List</h5>
+                <table class="table table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr.No.</th>
+                            <th scope="col">Booking CheckOut Date</th>
+                            <th scope="col">BookingID</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int srno = 1;
+                        }
+                        @foreach (var temp in Model)
+                        {
+                            <tr>
+                                <td scope="row">@srno</td>
+                                <td>@temp.BookingCheckOutDate</td>
+                                <td>@temp.BookingID</td>
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-action="Create" asp-controller="BillDetails" asp-route-id="@temp.BookingID">Bill</a>
+                                </td>
+                            </tr>
+                            srno++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

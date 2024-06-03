@@ -1,0 +1,57 @@
+﻿@model IEnumerable<RoomPhoto>
+
+<div class="col-12 mx-auto">
+    <div class="card">
+        <div class="card-content">
+            <!-- table striped -->
+            <div class="table-responsive">
+
+                <br />
+                <h5 class="card-title text-center text-info">Room Photos</h5>
+                @if (TempData["Message"] != null)
+                {
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        @TempData["Message"]
+                    </div>
+                }
+                <hr />
+                <a class="btn btn-outline-primary w-25" asp-action="Create"> Create </a>
+                <table class="table table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr.No.</th>
+                            <th scope="col">Room Number</th>
+                            <th scope="col">Photo Title</th>
+                            <th scope="col">Photo</th>
+                            <th scope="col">Photo File Path</th>
+                            <th scope="col">Upload Date</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int srno = 1;
+                        }
+                        @foreach (var temp in Model)
+                        {
+                            <tr>
+                                <td scope="row">@srno</td>
+                                <td>@temp.Room.RoomNumber</td>
+                                <td>@temp.PhotoTitle</td>
+                                <td>@temp.Photo</td>
+                                <td>@temp.PhotoFilePath</td>
+                                <td>@temp.UploadDate</td>
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@temp.RoomPhotoID">Edit</a>
+                                    |
+                                    <a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@temp.RoomPhotoID">Delete</a>
+                                </td>
+                            </tr>
+                            srno++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

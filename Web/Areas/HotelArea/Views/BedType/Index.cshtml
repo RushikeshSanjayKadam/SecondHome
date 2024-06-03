@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BedType>
+
+<div class="col-12 mx-auto">
+    <div class="card">
+        <div class="card-content">
+            <!-- table striped -->
+            <div class="table-responsive">
+
+                <br />
+                <h5 class="card-title text-center text-info">Bed Types</h5>
+
+                <a class="btn btn-outline-primary w-25" asp-action="Create"> Create </a>
+                <table class="table table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr.No.</th>
+                            <th scope="col">BedType</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int srno = 1;
+                        }
+                        @foreach (var temp in Model)
+                        {
+                            <tr>
+                                <td scope="row">@srno</td>
+                                <td>@temp.BedTypeName</td>
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@temp.BedTypeID">Edit</a>
+                                    |
+                                    <a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@temp.BedTypeID">Delete</a>
+                                </td>
+                            </tr>
+                            srno++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

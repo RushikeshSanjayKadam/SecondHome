@@ -1,0 +1,68 @@
+﻿@model Room
+
+<div class="col-md-6 col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title text-info">Edit Rooms</h4>
+            <div>
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-info">@ViewBag.Message</div>
+                }
+
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <form class="form form-vertical" asp-action="Edit" method="post">
+                    <input type="hidden" asp-for="RoomID" />
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Room Number</label>
+                                    <input asp-for="RoomNumber" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">RoomCategories</label>
+                                <select id="country" class="form-select" asp-for="RoomCategoryID" asp-items="@ViewBag.RoomCategories">
+                                    <option value="0">RoomCategories</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Floors</label>
+                                    <select id="state" class="form-select" asp-for="FloorID" asp-items="@ViewBag.Floors">
+                                        <option value="0"> Floors</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">MaxNoofAdults</label>
+                                    <input asp-for="MaxNoofAdults" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">MaxNoofChilds</label>
+                                    <input asp-for="MaxNoofChilds" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Room Charges</label>
+                                    <input asp-for="RoomCharges" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

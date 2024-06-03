@@ -1,0 +1,65 @@
+﻿@model Invoice
+<div class="col-md-6 col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title text-info">Add Bill Details</h4>
+            <div>
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-info">@ViewBag.Message</div>
+                }
+
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <form class="form form-vertical" asp-action="Create" method="post">
+                    <input type="hidden" asp-for="CheckOutID" value="@ViewBag.CheckOutID" />
+                    <input type="hidden" asp-for="BookingCheckOut.BookingID" value="@ViewBag.CheckOutID"/>
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">CheckOut ID</label>:@ViewBag.CheckOutID
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Invoice Date</label>
+                                    <input asp-for="InvoiceDate" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Total Amount</label>
+                                    <input asp-for="TotalAmount" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Discount Amount</label>
+                                    <input asp-for="DiscountAmount" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Tax Amount</label>
+                                    <input asp-for="TaxAmount" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Tax Percentage</label>
+                                    <input asp-for="TaxPercentage" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

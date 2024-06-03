@@ -1,0 +1,60 @@
+﻿@model RoomPhoto
+<div class="col-md-6 col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title text-info">Add Room Photos</h4>
+            <div>
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-info">@ViewBag.Message</div>
+                }
+
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <form class="form form-vertical" enctype="multipart/form-data" asp-action="Create" method="post">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Select Room</label>
+                                    <select class="form-select" asp-for="RoomID" asp-items="@ViewBag.Rooms">
+                                        <option> Select Room</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Photo Title</label>
+                                    <input asp-for="PhotoTitle" class="form-control" />
+                                </div>
+                            </div>          
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Photo</label>
+                                    <input asp-for="Photo" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Photo File Path</label>
+                                    <input asp-for="PhotoFilePath" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Upload Date</label>
+                                    <input asp-for="UploadDate" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model Building
+<div class="col-md-6 col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title text-info">Edit Building</h4>
+            <div>
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-info">@ViewBag.Message</div>
+                }
+
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <form class="form form-vertical" asp-action="Edit" method="post">
+                    <input type="hidden" asp-for="BuildingID" />
+                    <input type="hidden" id="HotelID" name="HotelID" value="@ViewBag.HotelID" />
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Building Name</label>
+                                    <input asp-for="BuildingName" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿@model City
+
+<script src="/lib/jquery/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#country").change(function () {
+            $.ajax(
+                {
+                    url: "/AdminArea/City/GetStatesJson/" + $("#country").val(),
+                    type: "Get",
+                    contentType: "application/json",
+                    success: function (result) {
+                        // alert(JSON.stringify(result));
+                        $("#state").empty();
+                        for (var i = 0; i < result.length; i++) {
+                            var str = "<option value='" + result[i].stateID + "'>" + result[i].stateName + "</option>";
+                            $("#state").append(str);
+                        }
+                    },
+                    error: function (err) {
+                        alert(JSON.stringify(err));
+                    }
+                });
+        });
+    });
+</script>
+<div class="col-md-6 col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title text-info">Edit City</h4>
+            <div>
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-info">@ViewBag.Message</div>
+                }
+
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <form class="form form-vertical" asp-action="Edit" method="post">
+                    <input type="hidden" asp-for="CityID" />
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">City Name</label>
+                                    <input asp-for="CityName" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Select Country</label>
+                                <select id="country" class="form-select" asp-for="CountryID" asp-items="@ViewBag.Countries">
+                                    <option value="0"> Select Country</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Select State</label>
+                                    <select id="state" class="form-select" asp-for="StateID" asp-items="@ViewBag.States">
+                                        <option value="0"> Select State</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                            </div>
+                            <div class="col-12 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

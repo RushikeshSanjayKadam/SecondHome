@@ -1,0 +1,109 @@
+﻿@model BookingRoomVM
+<script src="/lib/jquery/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#hotel").change(function () {
+            $.ajax(
+                {
+                    url: "/UserArea/BookingRoom/GetRoomCategoryByHotelJson/" + $("#hotel").val(),
+                    type: "Get",
+                    contentType: "application/json",
+                    success: function (result) {
+                        //alert(JSON.stringify(result));
+                        $("#roomcategory").empty();
+                        for (var i = 0; i < result.length; i++) {
+                            var str = "<option value='" + result[i].roomCategoryID + "'>" + result[i].roomCategoryName + "</option>";
+                            $("#roomcategory").append(str);
+                        }
+                    },
+                    error: function (err) {
+                        alert(JSON.stringify(err));
+                    }
+                });
+        });
+    });
+    $(function () {
+        $("#roomcategory").change(function () {
+            $.ajax(
+                {
+                    url: "/UserArea/BookingRoom/GetRoomByRoomCategoriesJson/" + $("#roomcategory").val(),
+                    type: "Get",
+                    contentType: "application/json",
+                    success: function (result) {
+                        //alert(JSON.stringify(result));
+                        $("#room").empty();
+                        for (var i = 0; i < result.length; i++) {
+                            var str = "<option value='" + result[i].roomID + "'>" + result[i].roomNumber + "</option>";
+                            $("#room").append(str);
+                        }
+                    },
+                    error: function (err) {
+                        alert(JSON.stringify(err));
+                    }
+                });
+        });
+    });
+</script>
+<div class="col-12 col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title text-info">Book Room</h4>
+            <div>
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-info">@ViewBag.Message</div>
+                }
+
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <form class="form form-vertical" asp-action="Create" method="post">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">From Date</label>
+                                    <input asp-for="FromDate" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">To Date</label>
+                                    <input asp-for="ToDate" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Room Categories</label>
+                                    <select id="hotel" class="form-select" asp-for="HotelID" asp-items="@ViewBag.Hotels">
+                                        <option>Hotels</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Room Categories</label>
+                                    <select id="roomcategory" class="form-select" asp-for="RoomCategoryID" asp-items="@ViewBag.RoomCategories">
+                                        <option>Room Categories</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">Rooms</label>
+                                    <select id="room" class="form-select" asp-for="RoomID" asp-items="@ViewBag.Rooms">
+                                        <option>Rooms</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

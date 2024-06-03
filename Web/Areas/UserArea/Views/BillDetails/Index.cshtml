@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Invoice>
+
+<div class="col-12 mx-auto">
+    <div class="card">
+        <div class="card-content">
+            <!-- table striped -->
+            <div class="table-responsive">
+                <br />
+                <h5 class="card-title text-center text-info">Bill Details List</h5>
+                <table class="table table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr.No.</th>
+                            <th scope="col">Booking CheckOut Date</th>
+                            <th scope="col">Invoice Date</th>
+                            <th scope="col">Total Amount</th>
+                            <th scope="col">Discount Amount</th>
+                            <th scope="col">Tax Amount</th>
+                            <th scope="col">Tax Percentage</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int srno = 1;
+                        }
+                        @foreach (var temp in Model)
+                        {
+                            <tr>
+                                <td scope="row">@srno</td>
+                                <td>@temp.BookingCheckOut.BookingCheckOutDate</td>
+                                <td>@temp.InvoiceDate</td>
+                                <td>@temp.TotalAmount</td>
+                                <td>@temp.DiscountAmount</td>
+                                <td>@temp.TaxAmount</td>
+                                <td>@temp.TaxPercentage</td>
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-action="Create" asp-route-id="@temp.InvoiceID">Print</a>
+                                </td>
+                            </tr>
+                            srno++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Hotel>
+<div class="col-12 mx-auto">
+    <div class="card">
+        <div class="card-content">
+            <!-- table striped -->
+            <div class="table-responsive">
+
+                <br />
+                <h5 class="card-title text-center text-info">Hotels</h5>
+                <table class="table table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">HotelName</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var temp in Model)
+                        {
+                            <tr>
+                                <td>@temp.HotelName</td>
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-action="CheckAvailability" asp-controller="BookingRoom" asp-area="UserArea" asp-route-id="@temp.HotelID">Book</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

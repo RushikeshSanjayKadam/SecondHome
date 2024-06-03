@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Hotel>
+<script src="/lib/jquery/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#country").change(function () {
+            $.ajax(
+                {
+                    url: "/Home/GetStatesJson/" + $("#country").val(),
+                    type: "Get",
+                    contentType: "application/json",
+                    success: function (result) {
+                         // alert(JSON.stringify(result));
+                        $("#state").empty();
+                        for (var i = 0; i < result.length; i++) {
+                            var str = "<option value='" + result[i].stateID + "'>" + result[i].stateName + "</option>";
+                            $("#state").append(str);
+                        }
+                    },
+                    error: function (err) {
+                        alert(JSON.stringify(err));
+                    }
+                });
+        });
+    });
+
+    $(function () {
+        $("#state").change(function () {
+            $.ajax(
+                {
+                    url: "/Home/GetCitiesJson/" + $("#state").val(),
+                    type: "Get",
+                    contentType: "application/json",
+                     success: function (result) {
+                         // alert(JSON.stringify(result));
+                        $("#city").empty();
+                        for (var i = 0; i < result.length; i++) {
+                            var str = "<option value='" + result[i].cityID + "'>" + result[i].cityName + "</option>";
+                            $("#city").append(str);
+                        }
+                    },
+                    error: function (err) {
+                        alert(JSON.stringify(err));
+                    }
+                });
+        });
+    });
+</script>
+
+<form asp-action="SearchByName" method="post">
+    <aside class="single_sidebar_widget post_category_widget">
+        <div class="row">
+            <div class="col-3">
+                <div class="form-group">
+                    <select class="form-select" asp-items="@ViewBag.RoomCategories">
+                        <option value="0" class="text-black">Room Categories</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <select id="country" class="form-select text-black" asp-items="@ViewBag.Countries">
+                        <option value="0" class="text-black"> Select Country</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <select id="state" class="form-select text-black" asp-items="@ViewBag.States">
+                        <option value="0" class="text-black"> Select State</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <select id="city" class="form-select text-black" asp-items="@ViewBag.Cities">
+                        <option value="0" class="text-black"> Select City</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 mx-auto justify-content-center">
+                <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+            </div>
+        </div>
+    </aside>
+</form>
+

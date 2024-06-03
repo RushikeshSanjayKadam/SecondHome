@@ -1,0 +1,35 @@
+﻿@model CheckAvailabilityVM
+<div class="col-12 col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title text-info">Check Availability</h4>
+            <div>
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-info">@ViewBag.Message</div>
+                }
+
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <form class="form form-vertical" asp-action="CheckAvailability" method="get">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-12 justify-content-center">
+                                @for (int i = 1; i <= 7; i++)
+                                {
+                                    <input type="checkbox" name="dates" value="@DateTime.Today.AddDays(i)"> @DateTime.Today.AddDays(i).ToString("dddd, MMM d")
+                                    <br />
+                                }
+                            </div>
+                            <div class="col-12 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary me-1 mb-1" asp-action="Create" asp-controller="BookingRoom">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

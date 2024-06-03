@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CancelBooking>
+
+<div class="col-12 mx-auto">
+    <div class="card">
+        <div class="card-content">
+            <!-- table striped -->
+            <div class="table-responsive">
+
+                <br />
+                <h5 class="card-title text-center text-info">Cancelled Bookings</h5>
+                <table class="table table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr.No.</th>
+                            <th scope="col">Booking ID</th>
+                            <th scope="col">Cancel Booking Date</th>
+                            <th scope="col">Reason To Cancel</th>
+                            <th scope="col">IsAdvance</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int srno = 1;
+                        }
+                        @foreach (var temp in Model)
+                        {
+                            <tr>
+                                <td scope="row">@srno</td>
+                                <td>@temp.BookingID</td>
+                                <td>@temp.CancelBookingDate</td>
+                                <td>@temp.ReasonToCancel</td>
+                                <td>@temp.IsAdvance</td>
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-action="Create" asp-controller="CheckIn" asp-route-id="@temp.BookingID">Refund</a>
+                                </td>
+                            </tr>
+                            srno++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

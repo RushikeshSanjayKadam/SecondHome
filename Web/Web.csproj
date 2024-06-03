@@ -1,0 +1,155 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\HotelBackend\**" />
+    <Content Remove="wwwroot\HotelBackend\**" />
+    <EmbeddedResource Remove="wwwroot\HotelBackend\**" />
+    <None Remove="wwwroot\HotelBackend\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.18">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Infra\Infra.csproj" />
+    <ProjectReference Include="..\Repo\Repo.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\AdminArea\Data\" />
+    <Folder Include="Areas\AdminArea\Models\" />
+    <Folder Include="Areas\HotelArea\Data\" />
+    <Folder Include="Areas\HotelArea\Models\" />
+    <Folder Include="Areas\UserArea\Data\" />
+    <Folder Include="Areas\UserArea\Models\" />
+    <Folder Include="Models\" />
+    <Folder Include="wwwroot\RoomPhotos\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\AdminArea\Views\City\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\AdminArea\Views\State\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\AdminArea\Views\State\Create.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\AdminArea\Views\City\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\AdminArea\Views\City\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\AdminArea\Views\State\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\AdminArea\Views\State\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\AdminArea\Views\State\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\AdminArea\Views\City\Create.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\AdminArea\Views\City\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Homebackend\css\style.css %28Mohammad Rocky%27s conflicted copy 2018-05-08%29.map" />
+    <None Include="wwwroot\Homebackend\css\style.css.map" />
+    <None Include="wwwroot\Homebackend\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\Homebackend\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\Homebackend\image\banner\banner-2_tmp18321" />
+    <None Include="wwwroot\Homebackend\image\elements\_DS_Store" />
+    <None Include="wwwroot\Homebackend\image\favicon_tmp18091" />
+    <None Include="wwwroot\Homebackend\js\bootstrap.min.js" />
+    <None Include="wwwroot\Homebackend\js\contact.js" />
+    <None Include="wwwroot\Homebackend\js\custom.js" />
+    <None Include="wwwroot\Homebackend\js\gmaps.min.js" />
+    <None Include="wwwroot\Homebackend\js\jquery-3.2.1.min.js" />
+    <None Include="wwwroot\Homebackend\js\jquery.ajaxchimp.min.js" />
+    <None Include="wwwroot\Homebackend\js\jquery.form.js" />
+    <None Include="wwwroot\Homebackend\js\jquery.validate.min.js" />
+    <None Include="wwwroot\Homebackend\js\mail-script.js" />
+    <None Include="wwwroot\Homebackend\js\popper.js" />
+    <None Include="wwwroot\Homebackend\js\stellar.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\css\_DS_Store" />
+    <None Include="wwwroot\Homebackend\royal-Doc\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\Homebackend\royal-Doc\fonts\_DS_Store" />
+    <None Include="wwwroot\Homebackend\royal-Doc\img\_DS_Store" />
+    <None Include="wwwroot\Homebackend\royal-Doc\js\custom.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\js\jquery-1.11.0.min.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\js\jquery.nav.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\js\_DS_Store" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shAutoloader.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushAppleScript.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushAS3.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushBash.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushColdFusion.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushCpp.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushCSharp.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushCss.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushDelphi.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushDiff.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushErlang.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushGroovy.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushJava.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushJavaFX.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushJScript.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushPerl.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushPhp.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushPlain.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushPowerShell.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushPython.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushRuby.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushSass.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushScala.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushSql.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushVb.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shBrushXml.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shCore.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\scripts\shLegacy.js" />
+    <None Include="wwwroot\Homebackend\royal-Doc\syntax-highlighter\_DS_Store" />
+    <None Include="wwwroot\Homebackend\scss\style.scss" />
+    <None Include="wwwroot\Homebackend\scss\_accomodation.scss" />
+    <None Include="wwwroot\Homebackend\scss\_banner.scss" />
+    <None Include="wwwroot\Homebackend\scss\_blog.scss" />
+    <None Include="wwwroot\Homebackend\scss\_button.scss" />
+    <None Include="wwwroot\Homebackend\scss\_contact.scss" />
+    <None Include="wwwroot\Homebackend\scss\_elements.scss" />
+    <None Include="wwwroot\Homebackend\scss\_footer.scss" />
+    <None Include="wwwroot\Homebackend\scss\_header.scss" />
+    <None Include="wwwroot\Homebackend\scss\_predefine.scss" />
+    <None Include="wwwroot\Homebackend\scss\_testimonial.scss" />
+    <None Include="wwwroot\Homebackend\scss\_variables.scss" />
+    <None Include="wwwroot\Homebackend\vendors\bootstrap-datepicker\bootstrap-datetimepicker.min.js" />
+    <None Include="wwwroot\Homebackend\vendors\bootstrap-datepicker\bootstrap-select.js" />
+    <None Include="wwwroot\Homebackend\vendors\imagesloaded\imagesloaded.pkgd.min.js" />
+    <None Include="wwwroot\Homebackend\vendors\isotope\isotope-min.js" />
+    <None Include="wwwroot\Homebackend\vendors\lightbox\simpleLightbox.min.js" />
+    <None Include="wwwroot\Homebackend\vendors\linericon\fonts\Linearicons-Free.svg" />
+    <None Include="wwwroot\Homebackend\vendors\linericon\fonts\Linearicons-Free.woff2" />
+    <None Include="wwwroot\Homebackend\vendors\nice-select\js\jquery.nice-select.js" />
+    <None Include="wwwroot\Homebackend\vendors\nice-select\js\jquery.nice-select.min.js" />
+    <None Include="wwwroot\Homebackend\vendors\owl-carousel\owl.carousel.min.js" />
+  </ItemGroup>
+
+</Project>
